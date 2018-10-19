@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>SOCIAL NETWORK</h1>
+{% if user.is_authenticated %}
+{% if user.is_staff %}
+<h2>Welcome, Admin</h2>
+{% else %}
+<h2>Welcome, {{ user.first_name }}</h2>
+{% endif %}
+{% endif %}
+<br>
+{% for post in all_posts %}{{post.message}}
+<br>by {{post.created_by}}<br>
+<a class="btn btn-primary" href="{% url 'accounts:post-like-toggle' post.id %}" role="button">
+    Like/Unlike
+</a>
+{{ post.likes.count }} Likes<br><br>
+{% endfor %}
+
+{% endblock %}

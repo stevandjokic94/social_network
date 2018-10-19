@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>POST DETAILS</h1>
+{{ post.message }}<br><br>
+{{ post.created_by }}<br><br>
+{{ post.likes.count }}
+{% endblock %}
