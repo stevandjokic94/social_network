@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from accounts import views
+from rest_framework_jwt.views import obtain_jwt_token
 from views import signup
 from views import PostCreate, PostDetails, PostLikeToggle
 from django.contrib.auth import views as auth_views
@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^make_post/$', PostCreate.as_view(), name='create_post'),
     url(r'^posts/(?P<pk>[0-9]+)/$', PostDetails.as_view(), name='post-details'),
     url(r'^posts/(?P<pk>[0-9]+)/like', PostLikeToggle.as_view(), name='post-like-toggle'),
+    url(r'^api-token-auth/', obtain_jwt_token),
 ]
